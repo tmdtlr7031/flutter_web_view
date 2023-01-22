@@ -7,3 +7,22 @@
 
 ### PlatformException
 - 서버 내리기 > 터미널 > flutter clean > 다시 서버올리기
+
+### HTTP
+- ios, android 둘 다 HTTP는 막아놓은게 default, 허용을 위해선 별도 설정 필요
+- iOS
+  - ios > Runner > Info.plist > </dict> 위에 아래 코드 입력 
+  ``` xml
+    <dict>
+        <key>NSAllowsLocalNetworking</key>
+        <true/>
+        <key>NSAllowsArbitraryLoadsInWebContent</key>
+        <true/>
+    </dict>
+  ``` 
+  
+- Android
+  - android > app > src > main > AndroidManifest.xml > <manifest ~~ > 밑에 추가
+    - `<uses-permission android:name="android.permission.INTERNET" />`  --> 안드로이드에서 인터넷 사용하게 허용
+  - `<application>` 태그 안에 속성 추가
+    - `android:usesCleartextTraffic="true"` --> HTTP 사용하게 허용
